@@ -63,7 +63,7 @@ add_forward() {
         read -p "请输入端口: " port
         # 追加到config.toml文件
         echo "[[endpoints]]
-listen = \"0.0.0.0:$port\"
+listen = \"[::]:$port\"
 remote = \"$ip:$port\"" >> /root/realm/config.toml
         
         read -p "是否继续添加(Y/N)? " answer
