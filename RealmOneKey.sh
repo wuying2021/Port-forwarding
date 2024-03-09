@@ -29,7 +29,7 @@ show_menu() {
 deploy_realm() {
     mkdir -p /root/realm
     cd /root/realm
-    wget -O realm.tar.gz https://github.com/zhboner/realm/releases/download/v2.5.3/realm-x86_64-unknown-linux-gnu.tar.gz
+    wget -O realm.tar.gz https://hub.fastgit.org/zhboner/realm/releases/download/v2.5.3/realm-x86_64-unknown-linux-gnu.tar.gz
     tar -xvf realm.tar.gz
     chmod +x realm
     # 创建服务文件
