@@ -20,6 +20,7 @@ show_menu() {
     echo "2. 添加转发"
     echo "3. 删除转发"
     echo "4. 启动服务"
+    echo "5. 停止服务"
     echo "================="
     echo -e "realm 状态：${realm_status_color}${realm_status}\033[0m"
 }
@@ -81,6 +82,14 @@ start_service() {
     echo "realm服务已启动并设置为开机自启。"
 }
 
+#停止服务
+stop_service(){
+    systemctl daemon-reload
+    systemctl stop realm
+    systemctl disable realm
+    echo "realm服务已停止。"
+}
+
 # 主循环
 while true; do
     show_menu
@@ -97,6 +106,9 @@ while true; do
             ;;
         4)
             start_service
+            ;;
+        5)
+            stop_service
             ;;
         *)
             echo "无效选项: $choice"
