@@ -59,12 +59,12 @@ WantedBy=multi-user.target" > /etc/systemd/system/realm.service
 # 添加转发规则
 add_forward() {
     while true; do
-        read -p "请输入IP: " ip
-        read -p "请输入端口: " port
+        read -p "请输入监听端口: " lport
+        read -p "请输入远端端口: " rport
         # 追加到config.toml文件
         echo "[[endpoints]]
-listen = \"0.0.0.0:$port\"
-remote = \"$ip:$port\"" >> /root/realm/config.toml
+listen = \"[::]:$lport\"
+remote = \"127.0.0.1:$rport\"" >> /root/realm/config.toml
         
         read -p "是否继续添加(Y/N)? " answer
         if [[ $answer != "Y" && $answer != "y" ]]; then
