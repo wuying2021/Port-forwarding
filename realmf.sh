@@ -31,7 +31,7 @@ deploy_realm() {
     mkdir -p /root/realm
     cd /root/realm
     wget -O realm.tar.gz https://github.com/zhboner/realm/releases/download/v2.5.3/realm-x86_64-unknown-linux-gnu.tar.gz
-    if [ ! -f "realm" ]; then tar -xvf realm.tar.gz && chmod +x realm;else echo "realm存在";fi
+    if [ ! -f "realm" ]; then tar -xvf realm.tar.gz;else echo "realm存在";fi
     chmod +x realm
     # 创建服务文件
     echo "[Unit]
