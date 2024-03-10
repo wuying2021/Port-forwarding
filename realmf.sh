@@ -23,6 +23,7 @@ show_menu() {
     echo "5. 停止服务"
     echo "6. 卸载"
     echo "7. 查看转发规则"
+    echo "8. 重启服务"
     echo "================="
     echo -e "realm 状态：${realm_status_color}${realm_status}\033[0m"
 }
@@ -95,6 +96,12 @@ stop_service(){
     systemctl disable realm
     echo "realm服务已停止。"
 }
+#重启服务
+restart_service(){
+    systemctl daemon-reload
+    systemctl restart realm
+    echo "realm服务已重启。"
+}
 #卸载
 uninstall(){
     stop_service
@@ -103,7 +110,7 @@ uninstall(){
 }
 #查看转发规则
 checkrules(){
-    grep -c "endpoint" /root/realm/config.toml
+    echo -n "总规则数：" && grep -c "endpoint" /root/realm/config.toml
     cat /root/realm/config.toml
 }
 # 主循环
@@ -131,6 +138,9 @@ while true; do
             ;;
         7)
             checkrules
+            ;;
+        8)
+            restart_service
             ;;
         *)
             echo "无效选项: $choice"
