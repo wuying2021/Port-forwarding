@@ -96,9 +96,10 @@ stop_service(){
 }
 #卸载
 uninstall(){
-    stop_service()
+    stop_service
+    rm -rf /root/realm/
+    rm -rf /etc/systemd/system/realm.service
 }
-
 # 主循环
 while true; do
     show_menu
