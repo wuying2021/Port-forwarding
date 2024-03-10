@@ -21,6 +21,7 @@ show_menu() {
     echo "3. 删除转发"
     echo "4. 启动服务"
     echo "5. 停止服务"
+    echo "6. 卸载"
     echo "================="
     echo -e "realm 状态：${realm_status_color}${realm_status}\033[0m"
 }
@@ -93,6 +94,12 @@ stop_service(){
     systemctl disable realm
     echo "realm服务已停止。"
 }
+#卸载
+uninstall(){
+    stop_service()
+    rm -r /root/realm
+    rm /etc/systemd/system/realm.service
+}
 
 # 主循环
 while true; do
@@ -113,6 +120,9 @@ while true; do
             ;;
         5)
             stop_service
+            ;;
+        6)
+            uninstall
             ;;
         *)
             echo "无效选项: $choice"
