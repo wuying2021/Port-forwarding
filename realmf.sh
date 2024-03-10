@@ -103,6 +103,7 @@ uninstall(){
 }
 #查看转发规则
 checkrules(){
+    grep -c "endpoint" /root/realm/config.toml
     cat /root/realm/config.toml
 }
 # 主循环
