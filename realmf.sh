@@ -97,7 +97,7 @@ stop_service(){
 #卸载
 uninstall(){
     stop_service()
-    rm -rf /root/realm
+    rm -rf /root/realm/
     rm /etc/systemd/system/realm.service
 }
 
