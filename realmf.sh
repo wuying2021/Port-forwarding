@@ -14,7 +14,7 @@ fi
 # 显示菜单的函数
 show_menu() {
     clear
-    echo "欢迎使用realm一键转发脚本"
+    echo "欢迎使用realm落地一键转发脚本"
     echo "================="
     echo "1. 部署环境"
     echo "2. 添加转发"
@@ -22,6 +22,7 @@ show_menu() {
     echo "4. 启动服务"
     echo "5. 停止服务"
     echo "6. 卸载"
+    echo "7. 查看转发规则"
     echo "================="
     echo -e "realm 状态：${realm_status_color}${realm_status}\033[0m"
 }
@@ -100,6 +101,10 @@ uninstall(){
     rm -rf /root/realm/
     rm -rf /etc/systemd/system/realm.service
 }
+#查看转发规则
+checkrules(){
+    cat /root/realm/config.toml
+}
 # 主循环
 while true; do
     show_menu
@@ -122,6 +127,9 @@ while true; do
             ;;
         6)
             uninstall
+            ;;
+        7)
+            checkrules
             ;;
         *)
             echo "无效选项: $choice"
