@@ -107,6 +107,8 @@ uninstall(){
     stop_service
     rm -rf /root/realm/
     rm -rf /etc/systemd/system/realm.service
+    realm_status="未安装"
+    realm_status_color="\033[0;31m" # 红色
 }
 #查看转发规则
 checkrules(){
